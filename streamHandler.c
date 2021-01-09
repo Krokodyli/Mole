@@ -15,7 +15,7 @@ int update_search_output_stream(search_output_stream_t* stream){
 		if(fclose(stream->stream)) return 1;
 		char* pager_val = getenv("PAGER");
 		if(pager_val != NULL){
-			stream->stream = popen("less", "w");
+			stream->stream = popen(pager_val, "w");
 			if(stream->stream == NULL) stream->stream = stdout;
 		}
 		else stream->stream = stdout;
